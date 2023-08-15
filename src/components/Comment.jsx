@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Button,
   AspectRatio,
@@ -9,7 +10,7 @@ import {
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import { CaretRightIcon } from '@radix-ui/react-icons';
 
-function Comment() {
+function Comment({ comments }) {
   return (
     <AspectRatio ratio={1 / 1}>
       <Flex direction="column" gap="3">
@@ -17,18 +18,12 @@ function Comment() {
           <ScrollArea.Viewport className="ScrollAreaViewport">
             <div className="CommentContainer">
               <div className="CommentList">
-                <Text size="2" color="grass"><span style={{ fontWeight: 'bold' }}>fhasnur</span><span style={{ color: 'black' }}> Spill etalase 1 bang</span></Text> <br />
-                <Text size="1">13-08-2023 7:46 PM</Text> <br />
-                <Text size="2" color="grass"><span style={{ fontWeight: 'bold' }}>atom</span><span style={{ color: 'black' }}> Bang etalase 2 bisa upgrade ram sm ssd gk?</span></Text> <br />
-                <Text size="1">13-08-2023 7:48 PM</Text> <br />
-                <Text size="2" color="grass"><span style={{ fontWeight: 'bold' }}>fhasnur</span><span style={{ color: 'black' }}> Spill etalase 1 bang</span></Text> <br />
-                <Text size="1">13-08-2023 7:46 PM</Text> <br />
-                <Text size="2" color="grass"><span style={{ fontWeight: 'bold' }}>atom</span><span style={{ color: 'black' }}> Bang etalase 2 bisa upgrade ram sm ssd gk?</span></Text> <br />
-                <Text size="1">13-08-2023 7:48 PM</Text> <br />
-                <Text size="2" color="grass"><span style={{ fontWeight: 'bold' }}>fhasnur</span><span style={{ color: 'black' }}> Spill etalase 1 bang</span></Text> <br />
-                <Text size="1">13-08-2023 7:46 PM</Text> <br />
-                <Text size="2" color="grass"><span style={{ fontWeight: 'bold' }}>atom</span><span style={{ color: 'black' }}> Bang etalase 2 bisa upgrade ram sm ssd gk?</span></Text> <br />
-                <Text size="1">13-08-2023 7:48 PM</Text> <br />
+                {comments.map(comment => (
+                  <div key={comment._id}>
+                    <Text size="2" color="grass"><span style={{ fontWeight: 'bold' }}>{comment.username}</span><span style={{ color: 'black' }}> {comment.comment}</span></Text> <br />
+                    <Text size="1">{comment.timestamp}</Text> <br />
+                  </div>
+                ))}
               </div>
             </div>
           </ScrollArea.Viewport>
@@ -53,5 +48,9 @@ function Comment() {
     </AspectRatio >
   )
 }
+
+Comment.propTypes = {
+  comments: PropTypes.array.isRequired
+};
 
 export default Comment;

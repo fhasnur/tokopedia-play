@@ -9,7 +9,7 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route path="/video/:id">
+        <Route path="/:id">
           <VideoDetailPage />
         </Route>
       </Switch>

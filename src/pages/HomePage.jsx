@@ -7,7 +7,7 @@ import axios from "axios";
 function HomePage() {
   const [videos, setVideos] = useState([]);
 
-  const url_videos = "http://localhost:3000/videos/";
+  const url_videos = "https://odd-erin-whale-boot.cyclic.cloud/videos/";
 
   useEffect(() => {
     getVideos();
@@ -18,7 +18,7 @@ function HomePage() {
       const response = await axios.get(url_videos);
       setVideos(response.data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
