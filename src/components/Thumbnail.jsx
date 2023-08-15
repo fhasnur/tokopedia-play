@@ -30,7 +30,7 @@ function Thumbnail({ videos }) {
                 position: 'relative'
               }}
             />
-            <Box columns="2" gap="2" ml="2" style={{ color: 'white', zIndex: 5, marginTop: '-3.4rem', position: 'absolute' }}>
+            <Box columns="2" gap="2" ml="2" style={{ color: 'white', zIndex: 5, marginTop: '-4.5rem', position: 'absolute' }}>
               <Heading size="2">{video.title}</Heading>
               <Text size="1">{video.owner}</Text>
             </Box>

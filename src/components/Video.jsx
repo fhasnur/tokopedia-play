@@ -6,9 +6,8 @@ function Video({ videos }) {
   return (
     <AspectRatio ratio={16 / 9} key={videos._id}>
       <ReactPlayer
-        url={videos.linkVideo}
+        url="https://www.youtube.com/watch?v=e00iV8guByg"
         width="420"
-        height="345"
         alt={videos.title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
