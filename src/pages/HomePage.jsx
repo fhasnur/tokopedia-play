@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import NavHome from "../components/NavHome";
 import Thumbnail from "../components/Thumbnail";
 import { Theme, Container } from '@radix-ui/themes';
-import axios from "axios";
+import useAxios from '../hooks/useAxios';
 
 function HomePage() {
   const [videos, setVideos] = useState([]);
-
-  const url_videos = "https://odd-erin-whale-boot.cyclic.cloud/videos/";
+  const { axiosInstance } = useAxios();
 
   useEffect(() => {
-    getVideos();
-  }, [url_videos]);
+    const getVideos = async () => {
+      try {
+        const response = await axiosInstance.get('/videos');
+        setVideos(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  const getVideos = async () => {
-    try {
-      const response = await axios.get(url_videos);
-      setVideos(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    getVideos();
+  }, []);
 
   return (
     <Theme>
